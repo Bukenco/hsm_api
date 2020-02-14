@@ -1,0 +1,285 @@
+  [1m[35m (167.9ms)[0m  [1m[35mCREATE DATABASE "vabaco_dhp_kms_api" ENCODING = 'unicode'[0m
+  ↳ /home/buka/.rvm/gems/ruby-2.6.5/bin/rake:23
+  [1m[35m (59.3ms)[0m  [1m[35mCREATE DATABASE "vabaco_dhp_kms_api_test" ENCODING = 'unicode'[0m
+  ↳ /home/buka/.rvm/gems/ruby-2.6.5/bin/rake:23
+  [1m[35m (11.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (5.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5327474127183605250)[0m
+  ↳ bin/rails:9
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateUserKeys (20200213155348)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (11.2ms)[0m  [1m[35mCREATE TABLE "user_keys" ("id" bigserial primary key, "user_id" integer NOT NULL, "key" character varying(500) NOT NULL)[0m
+  ↳ db/migrate/20200213155348_create_user_keys.rb:3
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE  INDEX  "index_user_keys_on_user_id" ON "user_keys"  ("user_id")[0m
+  ↳ db/migrate/20200213155348_create_user_keys.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200213155348"]]
+  ↳ bin/rails:9
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-02-13 15:56:41.581532"], ["updated_at", "2020-02-13 15:56:41.581532"]]
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(5327474127183605250)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mUserKey Load (1.3ms)[0m  [1m[34mSELECT  "user_keys".* FROM "user_keys" ORDER BY "user_keys"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUserKey Load (0.5ms)[0m  [1m[34mSELECT  "user_keys".* FROM "user_keys" ORDER BY "user_keys"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5327474127183605250)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to AddNewColumnToUseKey (20200214095224)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "user_keys" ADD "key_ciphertext" text[0m
+  ↳ db/migrate/20200214095224_add_new_column_to_use_key.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200214095224"]]
+  ↳ bin/rails:9
+  [1m[35m (4.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(5327474127183605250)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mUserKey Load (0.3ms)[0m  [1m[34mSELECT  "user_keys".* FROM "user_keys" WHERE "user_keys"."user_id" = $1 ORDER BY "user_keys"."id" ASC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[36mUserKey Load (0.4ms)[0m  [1m[34mSELECT  "user_keys".* FROM "user_keys" WHERE "user_keys"."user_id" = $1 ORDER BY "user_keys"."id" ASC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[36mUserKey Load (0.2ms)[0m  [1m[34mSELECT  "user_keys".* FROM "user_keys" WHERE "user_keys"."user_id" = $1 ORDER BY "user_keys"."id" ASC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[36mUserKey Load (0.2ms)[0m  [1m[34mSELECT  "user_keys".* FROM "user_keys" WHERE "user_keys"."user_id" = $1 ORDER BY "user_keys"."id" ASC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[36mUserKey Load (0.2ms)[0m  [1m[34mSELECT  "user_keys".* FROM "user_keys" WHERE "user_keys"."user_id" = $1 ORDER BY "user_keys"."id" ASC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[36mUserKey Load (0.3ms)[0m  [1m[34mSELECT  "user_keys".* FROM "user_keys" WHERE "user_keys"."user_id" = $1 ORDER BY "user_keys"."id" ASC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[36mUserKey Load (0.3ms)[0m  [1m[34mSELECT  "user_keys".* FROM "user_keys" WHERE "user_keys"."user_id" = $1 ORDER BY "user_keys"."id" ASC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[36mUserKey Load (0.3ms)[0m  [1m[34mSELECT  "user_keys".* FROM "user_keys" ORDER BY "user_keys"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUserKey Create (2.3ms)[0m  [1m[32mINSERT INTO "user_keys" ("user_id", "key", "key_ciphertext") VALUES ($1, $2, $3) RETURNING "id"[0m  [["user_id", 1], ["key", "\xB1\xDE\x1A\xDE\x91,\xC4\x1D\x16B}%m1=A\x9B=j\x869\x9A\x10\xE3\xAD\xE5\xCF\x86~\x82\xC8\x8B\xCFW\x1A\xFD\xB8\x7Fv\x10\xC1\xEA\x13\x82p8\xAC'\xBD!\xC5=)\x92\xE9\x05\xA7^\x10\x0F\x95\x9F\xA2X"], ["key_ciphertext", "fujCt8Q1CWAtQoX83dAEl1xgRgVx0NNKjHrx+mVIOjTqQLD8I9bmzpL1it+FVH660auNqrJqWibuT7adXi21USZ79Zc0Rtd54UpQad9U+OW0FJqlJ9VM4KMRoKM="]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUserKey Create (0.5ms)[0m  [1m[32mINSERT INTO "user_keys" ("user_id", "key", "key_ciphertext") VALUES ($1, $2, $3) RETURNING "id"[0m  [["user_id", 1], ["key", "\xB1\xDE\x1A\xDE\x91,\xC4\x1D\x16B}%m1=A\x9B=j\x869\x9A\x10\xE3\xAD\xE5\xCF\x86~\x82\xC8\x8B\xCFW\x1A\xFD\xB8\x7Fv\x10\xC1\xEA\x13\x82p8\xAC'\xBD!\xC5=)\x92\xE9\x05\xA7^\x10\x0F\x95\x9F\xA2X"], ["key_ciphertext", "rxFDcYkCJDxgeOdjVeVd5IGM8VC34gp9qzVZWZ6XRGaAahqFZuimW7qSU1IYQgiqV0iSCs9D3S+TBJWyWJi7YWGsLwXZvMJNUr0H1fqQv00ax/j1/kX0SvMuau0="]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUserKey Load (0.8ms)[0m  [1m[34mSELECT  "user_keys".* FROM "user_keys" ORDER BY "user_keys"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUserKey Load (0.2ms)[0m  [1m[34mSELECT  "user_keys".* FROM "user_keys" WHERE "user_keys"."user_id" = $1 ORDER BY "user_keys"."id" ASC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[36mUserKey Load (0.2ms)[0m  [1m[34mSELECT  "user_keys".* FROM "user_keys" WHERE "user_keys"."user_id" = $1 ORDER BY "user_keys"."id" ASC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUserKey Create (0.7ms)[0m  [1m[32mINSERT INTO "user_keys" ("user_id", "key", "key_ciphertext") VALUES ($1, $2, $3) RETURNING "id"[0m  [["user_id", 1], ["key", "\xF5\xC0\xCD\xF9 \xF0?V \xFB\x00@\x93\x03\xA3=\x90\x8Ck\xF2\xF2\x95\xA4\xDF\xA3#\xDA>\xA9Z\x90\xCD\xBA\xC3\x88Ds7\xE0`0\xCE\x9A\xF34\xAC\xC8\xDD\x96\xA2\xBBcmq\xD5\xFA\x8F7\xD6I&\xEF\e\xD1"], ["key_ciphertext", "bWH/eEFwN8cUHRl29FchuoHxE6We0yOqOYSq9F6+OxgWpEXNTk5gO5LRYwrWJUZ75wmiHBn4AXMnkWFd0dPOBS8KJGI5L2dtUYHMCktOqHrCddiYPw4u4fRmt3o="]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUserKey Create (0.7ms)[0m  [1m[32mINSERT INTO "user_keys" ("user_id", "key", "key_ciphertext") VALUES ($1, $2, $3) RETURNING "id"[0m  [["user_id", 1], ["key", "\xF5\xC0\xCD\xF9 \xF0?V \xFB\x00@\x93\x03\xA3=\x90\x8Ck\xF2\xF2\x95\xA4\xDF\xA3#\xDA>\xA9Z\x90\xCD\xBA\xC3\x88Ds7\xE0`0\xCE\x9A\xF34\xAC\xC8\xDD\x96\xA2\xBBcmq\xD5\xFA\x8F7\xD6I&\xEF\e\xD1"], ["key_ciphertext", "ZSQ8TlMNGHqNRdu15g5ejchMbynYriwsBhDiiCNDXD9lh5xmZ9L1qOjvs5E+137VWzK0d+rHPLrwRjflrHLUlV/RzwOQpsVMh4LfEUPXKRXoQ0ackcA0N4BPgTM="]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUserKey Create (0.6ms)[0m  [1m[32mINSERT INTO "user_keys" ("user_id") VALUES ($1) RETURNING "id"[0m  [["user_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5327474127183605250)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to RemoveKeyColumnFromUserKey (20200214103053)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "user_keys" DROP COLUMN "key"[0m
+  ↳ db/migrate/20200214103053_remove_key_column_from_user_key.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200214103053"]]
+  ↳ bin/rails:9
+  [1m[35m (34.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(5327474127183605250)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mUserKey Load (0.4ms)[0m  [1m[34mSELECT  "user_keys".* FROM "user_keys" WHERE "user_keys"."user_id" = $1 ORDER BY "user_keys"."id" ASC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[36mUserKey Load (0.2ms)[0m  [1m[34mSELECT  "user_keys".* FROM "user_keys" WHERE "user_keys"."user_id" = $1 ORDER BY "user_keys"."id" ASC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[36mUserKey Load (0.2ms)[0m  [1m[34mSELECT  "user_keys".* FROM "user_keys" WHERE "user_keys"."user_id" = $1 ORDER BY "user_keys"."id" ASC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUserKey Create (0.4ms)[0m  [1m[32mINSERT INTO "user_keys" ("user_id", "key_ciphertext") VALUES ($1, $2) RETURNING "id"[0m  [["user_id", 1], ["key_ciphertext", "l9GDVJRqpR5/1oQiG7qLftgQd4bXpxT6i7JorBRyRY3kf9kskMTYsC3ioGslwi0X7CCGPEgfhATuTXJmyt5Te5uapj+C/WpV+6PRAMA58HnbEcFzBnpZwJIhwB4="]]
+  [1m[35m (37.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUserKey Load (1.5ms)[0m  [1m[34mSELECT  "user_keys".* FROM "user_keys" ORDER BY "user_keys"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUserKey Load (0.7ms)[0m  [1m[34mSELECT  "user_keys".* FROM "user_keys" ORDER BY "user_keys"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUserKey Load (0.8ms)[0m  [1m[34mSELECT  "user_keys".* FROM "user_keys" ORDER BY "user_keys"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+Started GET "/api-docs/index.html" for ::1 at 2020-02-14 16:33:09 +0400
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/buka/.rvm/gems/ruby-2.6.5/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+Started GET "/api-docs/swagger-ui.css" for ::1 at 2020-02-14 16:33:09 +0400
+Started GET "/api-docs/swagger-ui-bundle.js" for ::1 at 2020-02-14 16:33:09 +0400
+Started GET "/api-docs/swagger-ui-standalone-preset.js" for ::1 at 2020-02-14 16:33:09 +0400
+Started GET "/api-docs/v1/swagger.json" for ::1 at 2020-02-14 16:33:09 +0400
+Started GET "/api-docs/v1/swagger.json" for ::1 at 2020-02-14 16:33:21 +0400
+Started GET "/favicon.ico" for ::1 at 2020-02-14 16:33:21 +0400
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+actionpack (5.2.4.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.4.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.2) lib/puma/configuration.rb:227:in `call'
+puma (3.12.2) lib/puma/server.rb:674:in `handle_request'
+puma (3.12.2) lib/puma/server.rb:476:in `process_client'
+puma (3.12.2) lib/puma/server.rb:334:in `block in run'
+puma (3.12.2) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/api-docs/index.html" for ::1 at 2020-02-14 16:46:50 +0400
+Started GET "/api-docs/swagger-ui.css" for ::1 at 2020-02-14 16:46:50 +0400
+Started GET "/api-docs/swagger-ui-standalone-preset.js" for ::1 at 2020-02-14 16:46:50 +0400
+Started GET "/api-docs/swagger-ui-bundle.js" for ::1 at 2020-02-14 16:46:50 +0400
+Started GET "/api-docs/v1/swagger.json" for ::1 at 2020-02-14 16:46:51 +0400
+Started GET "/api-docs/favicon-32x32.png" for ::1 at 2020-02-14 16:46:51 +0400
+Started GET "/api-docs/index.html" for ::1 at 2020-02-14 16:47:35 +0400
+Started GET "/api-docs/swagger-ui.css" for ::1 at 2020-02-14 16:47:35 +0400
+Started GET "/api-docs/swagger-ui-standalone-preset.js" for ::1 at 2020-02-14 16:47:35 +0400
+Started GET "/api-docs/swagger-ui-bundle.js" for ::1 at 2020-02-14 16:47:35 +0400
+Started GET "/api-docs/v1/swagger.json" for ::1 at 2020-02-14 16:47:35 +0400
+Started GET "/api-docs/favicon-32x32.png" for ::1 at 2020-02-14 16:47:35 +0400
+Started GET "/user_keys/get_user_key?user_id=1" for ::1 at 2020-02-14 16:47:47 +0400
+Processing by UserKeysController#get_user_key as JSON
+  Parameters: {"user_id"=>"1"}
+Unpermitted parameter: :format
+  [1m[36mUserKey Load (0.5ms)[0m  [1m[34mSELECT  "user_keys".* FROM "user_keys" WHERE "user_keys"."user_id" = $1 ORDER BY "user_keys"."id" ASC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/services/user_key_service.rb:18
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/user_key_service.rb:19
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/user_key_service.rb:19
+Completed 500 Internal Server Error in 111ms (ActiveRecord: 5.1ms)
+
+
+  
+JSON::GeneratorError (source sequence is illegal/malformed utf-8):
+  
+app/controllers/user_keys_controller.rb:7:in `get_user_key'
+Started GET "/api-docs/index.html" for ::1 at 2020-02-14 16:49:05 +0400
+Started GET "/api-docs/swagger-ui.css" for ::1 at 2020-02-14 16:49:05 +0400
+Started GET "/api-docs/swagger-ui-bundle.js" for ::1 at 2020-02-14 16:49:05 +0400
+Started GET "/api-docs/swagger-ui-standalone-preset.js" for ::1 at 2020-02-14 16:49:05 +0400
+Started GET "/api-docs/v1/swagger.json" for ::1 at 2020-02-14 16:49:05 +0400
+Started GET "/api-docs/favicon-32x32.png" for ::1 at 2020-02-14 16:49:05 +0400
+Started GET "/user_keys/get_user_key?user_id=1" for ::1 at 2020-02-14 16:49:24 +0400
+Processing by UserKeysController#get_user_key as JSON
+  Parameters: {"user_id"=>"1"}
+Unpermitted parameter: :format
+  [1m[36mUserKey Load (0.2ms)[0m  [1m[34mSELECT  "user_keys".* FROM "user_keys" WHERE "user_keys"."user_id" = $1 ORDER BY "user_keys"."id" ASC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/services/user_key_service.rb:18
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/user_key_service.rb:19
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/user_key_service.rb:19
+  [1m[36mUserKey Load (0.6ms)[0m  [1m[34mSELECT  "user_keys".* FROM "user_keys" ORDER BY "user_keys"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUserKey Load (0.7ms)[0m  [1m[34mSELECT  "user_keys".* FROM "user_keys" ORDER BY "user_keys"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+Unpermitted parameter: :format
+  [1m[36mCACHE UserKey Load (0.0ms)[0m  [1m[34mSELECT  "user_keys".* FROM "user_keys" WHERE "user_keys"."user_id" = $1 ORDER BY "user_keys"."id" ASC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/services/user_key_service.rb:18
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/user_key_service.rb:19
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/user_key_service.rb:19
+Completed 500 Internal Server Error in 164389ms (Views: 0.1ms | ActiveRecord: 5.6ms)
+
+
+  
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".):
+  
+app/controllers/user_keys_controller.rb:8:in `get_user_key'
+Started GET "/api-docs/index.html" for ::1 at 2020-02-14 16:52:16 +0400
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/buka/.rvm/gems/ruby-2.6.5/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+Started GET "/api-docs/swagger-ui-bundle.js" for ::1 at 2020-02-14 16:52:16 +0400
+Started GET "/api-docs/swagger-ui.css" for ::1 at 2020-02-14 16:52:16 +0400
+Started GET "/api-docs/swagger-ui-standalone-preset.js" for ::1 at 2020-02-14 16:52:16 +0400
+Started GET "/api-docs/v1/swagger.json" for ::1 at 2020-02-14 16:52:16 +0400
+Started GET "/api-docs/favicon-32x32.png" for ::1 at 2020-02-14 16:52:16 +0400
+Started GET "/user_keys/get_user_key?user_id=1" for ::1 at 2020-02-14 16:52:24 +0400
+Processing by UserKeysController#get_user_key as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUserKey Load (0.4ms)[0m  [1m[34mSELECT  "user_keys".* FROM "user_keys" WHERE "user_keys"."user_id" = $1 ORDER BY "user_keys"."id" ASC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/services/user_key_service.rb:18
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/user_key_service.rb:19
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/user_key_service.rb:19
+Completed 500 Internal Server Error in 7802ms (ActiveRecord: 11.7ms)
+
+
+  
+JSON::GeneratorError (source sequence is illegal/malformed utf-8):
+  
+app/controllers/user_keys_controller.rb:8:in `get_user_key'
+Started GET "/api-docs/index.html" for ::1 at 2020-02-14 16:53:41 +0400
+Started GET "/api-docs/swagger-ui.css" for ::1 at 2020-02-14 16:53:41 +0400
+Started GET "/api-docs/swagger-ui-bundle.js" for ::1 at 2020-02-14 16:53:41 +0400
+Started GET "/api-docs/swagger-ui-standalone-preset.js" for ::1 at 2020-02-14 16:53:41 +0400
+Started GET "/api-docs/v1/swagger.json" for ::1 at 2020-02-14 16:53:41 +0400
+Started GET "/api-docs/favicon-32x32.png" for ::1 at 2020-02-14 16:53:41 +0400
+Started GET "/user_keys/get_user_key?user_id=1" for ::1 at 2020-02-14 16:53:52 +0400
+Processing by UserKeysController#get_user_key as JSON
+  Parameters: {"user_id"=>"1"}
+Unpermitted parameter: :format
+  [1m[36mUserKey Load (0.2ms)[0m  [1m[34mSELECT  "user_keys".* FROM "user_keys" WHERE "user_keys"."user_id" = $1 ORDER BY "user_keys"."id" ASC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/services/user_key_service.rb:18
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/user_key_service.rb:19
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/user_key_service.rb:19
+Completed 500 Internal Server Error in 3709ms (ActiveRecord: 7.2ms)
+
+
+  
+JSON::GeneratorError (source sequence is illegal/malformed utf-8):
+  
+app/controllers/user_keys_controller.rb:8:in `get_user_key'
+Started GET "/user_keys/get_user_key?user_id=1" for ::1 at 2020-02-14 16:54:32 +0400
+Processing by UserKeysController#get_user_key as JSON
+  Parameters: {"user_id"=>"1"}
+Unpermitted parameter: :format
+  [1m[36mUserKey Load (0.3ms)[0m  [1m[34mSELECT  "user_keys".* FROM "user_keys" WHERE "user_keys"."user_id" = $1 ORDER BY "user_keys"."id" ASC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/services/user_key_service.rb:18
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/user_key_service.rb:19
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/user_key_service.rb:19
+Completed 200 OK in 5356ms (Views: 0.1ms | ActiveRecord: 7.2ms)
+
+
+Started GET "/user_keys/get_user_key?user_id=1" for ::1 at 2020-02-14 16:55:10 +0400
+Processing by UserKeysController#get_user_key as JSON
+  Parameters: {"user_id"=>"1"}
+Unpermitted parameter: :format
+  [1m[36mUserKey Load (0.4ms)[0m  [1m[34mSELECT  "user_keys".* FROM "user_keys" WHERE "user_keys"."user_id" = $1 ORDER BY "user_keys"."id" ASC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/services/user_key_service.rb:18
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/user_key_service.rb:19
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/user_key_service.rb:19
+Completed 200 OK in 2914ms (Views: 0.1ms | ActiveRecord: 5.4ms)
+
+

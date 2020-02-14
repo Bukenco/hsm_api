@@ -1,0 +1,36 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 100gemfile
+
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: vabaco_dhp_kms_api
+  pool: 5
+  username: buka
+  password: "123456789"
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: vabaco_dhp_kms_api_test
+  pool: 5
+  username: buka
+  password: "123456789"
+#test:
+#  <<: *default
+#  url: <%#= ENV['DATABASE_URL'] %>
+#production:
+#  <<: *default
+#  url: <%#= ENV['DATABASE_URL'] %>
+
+#db_logs_development:
+#  <<: *default
+#  url: <%#= ENV['DATABASE_LOG_URL'] %>
+#db_logs_test:
+#  <<: *default
+#  url: <%#= ENV['DATABASE_LOG_URL'] %>
+#db_logs_production:
+#  <<: *default
+#  url: <%#= ENV['DATABASE_LOG_URL'] %>

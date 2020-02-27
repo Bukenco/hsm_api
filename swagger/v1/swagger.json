@@ -5,20 +5,35 @@
     "version": "v1"
   },
   "paths": {
-    "/user_keys/get_user_key": {
-      "get": {
-        "summary": "Get User Key",
+    "/hsm/encrypt_object": {
+      "post": {
+        "summary": "Encrypt data",
         "tags": [
-          "User Key"
+          "Hsm"
         ],
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "user_id",
-            "in": "query",
-            "type": "integer"
+            "name": "params",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "obj": {
+                  "type": "object",
+                  "properties": {
+                    "key": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "key_id": {
+                  "type": "integer"
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -27,8 +42,19 @@
             "schema": {
               "type": "object",
               "properties": {
-                "user_key": {
-                  "type": "string"
+                "encrypted_data": {
+                  "type": "object",
+                  "properties": {
+                    "key": {
+                      "type": "string"
+                    },
+                    "key_encrypted": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "key_id": {
+                  "type": "integer"
                 }
               }
             }
@@ -38,20 +64,89 @@
             "schema": {
               "type": "object",
               "properties": {
-                "status_code": {
-                  "type": "integer"
+                "errs": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/hsm/decrypt_object_list": {
+      "post": {
+        "summary": "Decrypt data list",
+        "tags": [
+          "Hsm"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "params",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "obj": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer"
+                      },
+                      "key": {
+                        "type": "string"
+                      }
+                    }
+                  }
                 },
-                "error_msg": {
-                  "type": "string"
+                "key_id": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "decrypted_data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer"
+                      },
+                      "key": {
+                        "type": "string"
+                      }
+                    }
+                  }
                 }
               }
             }
           },
-          "401": {
-            "description": "unauthorized",
+          "400": {
+            "description": "Bad request",
             "schema": {
               "type": "object",
               "properties": {
+                "errs": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
               }
             }
           }

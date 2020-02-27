@@ -1,11 +1,12 @@
 class KeyGeneratorService
 
-  def initialize(user_password)
-    @password = user_password.to_s
-    @salt = SecureRandom.random_bytes(64)
+  def initialize(user_id)
+    @user_id= user_id.to_s
   end
 
   def generate_key
-    ActiveSupport::KeyGenerator.new(@password).generate_key(@salt)
+    len = ActiveSupport::MessageEncryptor.key_len
+    @salt = SecureRandom.random_bytes(len)
+    ActiveSupport::KeyGenerator.new(@user_id).generate_key(@salt, len)
   end
 end

@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   mount Rswag::Api::Engine => '/api-docs'
 
   scope defaults: { :format => :json } do
-    get  'user_keys/get_user_key'
+    post  'hsm/encrypt_object'
+    post  'hsm/decrypt'
+    post  'hsm/decrypt_object_list'
   end
 end

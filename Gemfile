@@ -8,6 +8,8 @@ gem 'rails', '~> 5.2.2'
 
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
+gem 'jwt'
+gem 'rest-client'
 
 gem 'rswag-api'
 gem 'rswag-ui'
@@ -15,12 +17,6 @@ gem 'rswag-ui'
 gem 'lockbox'
 
 #gem 'sneakers'
-#gem 'rest-client'
-#gem 'faker'
-#gem 'factory_bot_rails'
-#gem 'sorcery'
-#gem 'webmock'
-#gem 'rest-client'
 #gem 'mina', require: false
 
 # Use Capistrano for deployment

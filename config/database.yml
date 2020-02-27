@@ -3,21 +3,7 @@ default: &default
   encoding: unicode
   pool: 100gemfile
 
-development:
-  adapter: postgresql
-  encoding: unicode
-  database: vabaco_dhp_kms_api
-  pool: 5
-  username: buka
-  password: "123456789"
 
-test:
-  adapter: postgresql
-  encoding: unicode
-  database: vabaco_dhp_kms_api_test
-  pool: 5
-  username: buka
-  password: "123456789"
 #test:
 #  <<: *default
 #  url: <%#= ENV['DATABASE_URL'] %>
